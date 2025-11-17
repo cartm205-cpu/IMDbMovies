@@ -1,0 +1,731 @@
+/* ========== GLOBAL ========== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+.section {
+  min-height: 100vh;
+  padding: 80px 60px;
+}
+
+/* Cinematic background feel for sections */
+.intro-section,
+.top10-section {
+  position: relative;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.08), #000 60%);
+}
+
+.intro-section::after,
+.top10-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 80%);
+  z-index: -1;
+}
+
+/* ========== TITLE BANNERS (Spotlight / sheen) ========== */
+.title-banner {
+  display: inline-block;
+  padding: 18px 36px;
+  border-radius: 10px;
+  background-image: linear-gradient(
+    120deg,
+    #f5c518 0%,
+    #ffe58a 40%,
+    #f5c518 80%
+  );
+  background-size: 200% 100%;
+  color: #000;
+  font-family: "Anton", sans-serif;
+  font-size: 40px;
+  letter-spacing: 1px;
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.6),
+    0 0 22px rgba(245, 197, 24, 0.5);
+  animation: titleSheen 5s ease-in-out infinite;
+}
+
+@keyframes titleSheen {
+  0% {
+    background-position: 0% 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0% 0;
+  }
+}
+
+/* ========== PAGE 1: INTRO ========== */
+
+.intro-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 50px;
+}
+
+.intro-left {
+  max-width: 50%;
+}
+
+.intro-text {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-top: 20px;
+}
+
+.intro-right {
+  max-width: 45%;
+}
+
+.intro-image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.intro-image {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+}
+
+/* Play button on intro image */
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  background: radial-gradient(circle, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+  color: #fff;
+  font-size: 52px;
+  border-radius: 50%;
+  padding: 18px 26px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.play-button:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  background: radial-gradient(circle, rgba(255,255,255,0.2), rgba(0,0,0,0.6));
+}
+
+/* ========== PAGE 2: TOP 10 ========== */
+
+.top10-description {
+  max-width: 720px;
+  font-size: 18px;
+  line-height: 1.7;
+  margin: 22px 0 40px;
+}
+
+/* Carousel container */
+.carousel-container {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 20px;
+}
+
+/* Scrollbar styling (optional) */
+.carousel-container::-webkit-scrollbar {
+  height: 8px;
+}
+.carousel-container::-webkit-scrollbar-track {
+  background: #111;
+}
+.carousel-container::-webkit-scrollbar-thumb {
+  background: #f5c518;
+  border-radius: 999px;
+}
+
+.carousel {
+    display: flex;
+    flex-wrap: nowrap;      /* IMPORTANT: Keeps all posters in one horizontal row */
+    overflow-x: auto;       /* Enables horizontal scrolling */
+    overflow-y: hidden;
+    gap: 40px;              /* Space between posters */
+    padding-bottom: 20px;
+    scroll-behavior: smooth;
+}
+
+/* Movie card layout */
+.movie-card {
+    flex: 0 0 auto;        /* Prevents cards from shrinking */
+    width: 260px;          /* Match your poster width */
+}
+
+
+/* Poster styling */
+.poster-wrapper {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow:
+    0 12px 26px rgba(0,0,0,0.9),
+    0 0 25px rgba(255,255,255,0.08);
+}
+
+.poster-wrapper img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+.poster-wrapper:hover img {
+  transform: scale(1.04);
+  opacity: 0.75;
+}
+
+/* Tooltip overlay */
+.movie-tooltip {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 12px 10px;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.4),
+    transparent
+  );
+  color: #fff;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  font-size: 14px;
+}
+
+.poster-wrapper:hover .movie-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.movie-title {
+  font-weight: 700;
+}
+
+.movie-rating {
+  color: #f5c518;
+  margin-top: 3px;
+}
+
+/* ========== STAR RATING (DISCRETE 10 STARS) ========== */
+
+.rating-stars {
+    display: flex;
+    gap: 3px;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.rating-stars .star {
+  position: relative;
+  color: #444;          /* empty star color */
+}
+
+/* fully filled star */
+.rating-stars .star.filled {
+  color: #f5c518;
+}
+
+/* partially filled star */
+.rating-stars .star.partial {
+  color: #444;          /* base is empty */
+}
+
+.rating-stars .star.partial::before {
+  content: "★";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc(var(--fill) * 100%);  /* fraction 0–1 */
+  overflow: hidden;
+  color: #f5c518;
+}
+
+/* numeric rating text */
+.rating-number {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #ccc;
+}
+/* =============== PAGE 3 =============== */
+
+.directors-section {
+    padding: 120px 60px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.directors-panel {
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    margin: 60px 0;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.directors-panel img {
+    width: 100%;
+    max-width: 1100px;
+}
+
+.director-text {
+    color: white;
+    max-width: 1000px;
+    margin: 80px auto;
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+/* fade-in when visible */
+.directors-panel.panel-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+/* ========== RESPONSIVE TWEAKS ========== */
+
+@media (max-width: 900px) {
+  .section {
+    padding: 60px 20px;
+  }
+
+  .intro-section {
+    flex-direction: column;
+  }
+
+  .intro-left,
+  .intro-right {
+    max-width: 100%;
+  }
+
+  .title-banner {
+    font-size: 32px;
+  }
+
+  .carousel {
+    gap: 24px;
+  }
+
+  .movie-card {
+    width: 190px;
+  }
+}
+/* ========== PAGE 4 : GENRE IMPACT ========== */
+
+.genre-section {
+    padding: 120px 40px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.genre-content {
+    margin-top: 40px;
+    max-width: 900px;
+    text-align: center;
+}
+
+.genre-visual img {
+    width: 100%;
+    max-width: 900px;
+    border-radius: 12px;
+    filter: drop-shadow(0 10px 25px rgba(0,0,0,0.5));
+}
+
+/* Genre text */
+.genre-text {
+    margin-top: 40px;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #ddd;
+}
+
+
+/* ===== Fade-in animation for Page 4 ===== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* ========= PAGE 5 : RELEASE YEAR ========= */
+
+.release-section {
+    padding: 120px 60px;
+    color: #fff;
+    text-align: center;
+}
+
+.release-legend {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin: 40px auto 70px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.legend-box {
+    width: 38px;
+    height: 38px;
+    border-radius: 4px;
+}
+
+.legend-box.before {
+    background: #f5d54a; /* yellow */
+}
+
+.legend-box.after {
+    background: #1186b4; /* blue */
+}
+
+/* Bars */
+.release-block {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto 90px;
+}
+
+.release-label {
+    text-align: left;
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+
+.release-bar-container {
+    width: 100%;
+    height: 48px;
+    background: #222;
+    border-radius: 10px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+.bar {
+    height: 100%;
+    width: 0%; /* animations will fill this */
+    transition: width 1.4s ease-in-out;
+}
+
+.bar.before {
+    background: #f5d54a;
+}
+
+.bar.after {
+    background: #1186b4;
+}
+
+.release-bar-container:hover .bar {
+    filter: brightness(1.15);
+}
+
+.release-bar-text {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.release-text {
+    max-width: 900px;
+    margin: 40px auto;
+    font-size: 22px;
+    line-height: 1.6;
+}
+/* ---------- PAGE 6 : FINAL FORMULA ---------- */
+
+.formula-section {
+    text-align: center;
+    margin-top: 120px;
+}
+
+.formula-layout {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    align-items: flex-start;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+/* Formula icons area */
+.formula-icons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    max-width: 480px;
+    justify-content: center;
+}
+
+.formula-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.formula-label {
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #f5c518;
+}
+
+.formula-plus,
+.formula-equals {
+    font-size: 42px;
+    color: #f5c518;
+    font-weight: 900;
+}
+
+.formula-icon {
+    width: 95px;
+    height: auto;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
+}
+
+/* Right side — top 5 movies */
+.formula-results {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 700px;
+}
+
+.formula-movie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formula-poster {
+    width: 120px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    transition: transform .3s ease;
+}
+
+.formula-poster:hover {
+    transform: scale(1.05);
+}
+
+.formula-rating {
+    margin-top: 8px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #f5c518;
+}
+
+/* Trailer card */
+.trailer-title {
+    font-size: 28px;
+    margin-top: 80px;
+    color: white;
+}
+
+.trailer-card {
+    width: 800px;
+    height: 450px;
+    margin: 30px auto 120px;
+    background: #1c2540;
+    border-radius: 14px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.6);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.trailer-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 14px 34px rgba(0,0,0,0.7);
+}
+
+/* Play button */
+.play-button {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 6px solid #f5c518;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.play-button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+    border-style: solid;
+    border-width: 22px 0 22px 40px;
+    border-color: transparent transparent transparent #f5c518;
+}
+
+/* Reveal animation (already used on earlier pages) */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Soft glow for formula icons */
+.formula-icon {
+    position: relative;
+    animation: subtleGlow 4s ease-in-out infinite;
+}
+
+@keyframes subtleGlow {
+    0% { filter: drop-shadow(0 0 6px rgba(245,197,24,0.25)); }
+    50% { filter: drop-shadow(0 0 14px rgba(245,197,24,0.55)); }
+    100% { filter: drop-shadow(0 0 6px rgba(245,197,24,0.25)); }
+}
+/* Equals animation */
+.formula-equals {
+    opacity: 0;
+    transform: translateX(-12px);
+    animation: equalsPop .9s ease forwards;
+    animation-delay: .7s;
+}
+
+@keyframes equalsPop {
+    0% { opacity: 0; transform: translateX(-12px) scale(0.9); }
+    60% { opacity: 1; transform: translateX(4px) scale(1.1); }
+    100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+/* Cinematic flip effect */
+.formula-poster {
+    transition: transform .35s ease, box-shadow .35s ease;
+    transform-style: preserve-3d;
+}
+
+.formula-poster:hover {
+    transform: rotateY(12deg) scale(1.06);
+    box-shadow: 0 10px 30px rgba(245,197,24,0.35);
+}
+/* Sparkle field container */
+.formula-section {
+    position: relative;
+    overflow: visible;
+}
+
+.sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(245,197,24,0.8);
+    border-radius: 50%;
+    filter: blur(1px);
+    opacity: 0;
+    animation: sparkleFloat 6s linear infinite;
+}
+
+@keyframes sparkleFloat {
+    0% { transform: translateY(0) scale(0.4); opacity: 0; }
+    10% { opacity: 0.9; }
+    50% { transform: translateY(-50px) scale(1); opacity: 0.5; }
+    100% { transform: translateY(-90px) scale(0); opacity: 0; }
+}
+
+
+/* TOP 10 Title Banner */
+.top10-banner {
+    margin-bottom: 20px;
+    animation: top10Glow 6s ease-in-out infinite;
+}
+
+@keyframes top10Glow {
+    0% { box-shadow: 0 0 18px rgba(245, 197, 24, 0.25); }
+    50% { box-shadow: 0 0 32px rgba(245, 197, 24, 0.55); }
+    100% { box-shadow: 0 0 18px rgba(245, 197, 24, 0.25); }
+}
+
+/* Spotlight sweep across banner */
+.spotlight {
+    position: relative;
+    overflow: hidden;
+}
+
+.spotlight::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 120%;
+    height: 100%;
+    background: linear-gradient(
+        75deg,
+        transparent 0%,
+        rgba(255,255,255,0.25) 50%,
+        transparent 100%
+    );
+    animation: spotlightSweep 5s ease-in-out infinite;
+}
+
+@keyframes spotlightSweep {
+    0% { left: -150%; }
+    50% { left: 110%; }
+    100% { left: 110%; }
+}
+/* ===== Trailer Video Styling ===== */
+.trailer-wrapper {
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto 0;
+    display: flex;
+    justify-content: center;
+}
+
+#perfectMovieTrailer {
+    width: 100%;
+    border-radius: 14px;
+    box-shadow: 
+        0 0 25px rgba(0, 0, 0, 0.8),
+        0 8px 20px rgba(0, 0, 0, 0.5);
+    outline: none;
+}
+#perfectMovieTrailer {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}

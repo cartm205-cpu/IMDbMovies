@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Golden Movie Formula</title>
+
+  <!-- Google Font for cinematic titles -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============== PAGE 1: INTRO ============== -->
+  <section id="page1" class="section intro-section">
+    <div class="intro-left">
+      <h1 class="title-banner">THE GOLDEN MOVIE FORMULA</h1>
+
+      <p class="intro-text">
+        In this project, I analyzed 9,083 rated movies on IMDb from 1920 to 2024
+        to uncover the elements that consistently appear in films rated 8/10 or higher.
+        The patterns I found touch on director, genre, and release year.
+      </p>
+
+      <p class="intro-text">
+        By exploring which movies rise to the top and why, we can better understand
+        what viewers value most in storytelling — and what it might take to create
+        the so-called “perfect movie.”
+      </p>
+    </div>
+
+    <div class="intro-right">
+      <!-- Replace movie-theater.jpg with your own file, or rename your image to this -->
+      <div class="intro-image-wrapper">
+        <img src="https://ktla.com/wp-content/uploads/sites/4/2022/09/movie-theater-popcorn.jpg?strip=1" alt="Movie theater screen" class="intro-image">
+        <button id="scrollToTop10" class="play-button" aria-label="Scroll to Top 10 section">
+          ▶
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== PAGE 2: TOP 10 ============== -->
+ <section id="page2" class="page page2-section">
+    <div class="title-banner spotlight top10-banner">
+    <span>THE TOP 10</span>
+</div>
+
+
+    <p class="section-description">
+        These are the top 10 highest-rated movies in my dataset. Hover over each
+        poster to reveal its title and IMDb rating, and watch how each one fills
+        the 10-star bar to show how close it gets to a “perfect” 10/10 score.
+    </p>
+
+    <div class="carousel-container">
+        <div class="carousel">
+
+        <!-- 1. The Shawshank Redemption -->
+       <div class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="shawshank.jpg">
+                    <div class="movie-tooltip">
+                        <div class="movie-title">The Shawshank Redemption</div>
+                        <div class="movie-rating">IMDb rating: 9.3 / 10</div>
+                    </div>
+                </div>
+
+                <div class="rating-stars" data-rating="9.3">
+                    <span class="star">★</span><span class="star">★</span>
+                    <span class="star">★</span><span class="star">★</span>
+                    <span class="star">★</span><span class="star">★</span>
+                    <span class="star">★</span><span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+
+                <div class="rating-number">9.3 / 10</div>
+            </div>
+
+
+        <!-- 2. The Godfather -->
+        <div class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="godfather.jpg">
+                    <div class="movie-tooltip">
+                        <div class="movie-title">The Godfather Poster</div>
+                        <div class="movie-rating">IMDb rating: 9.2 / 10</div>
+                    </div>
+                </div>
+
+                <div class="rating-stars" data-rating="9.2">
+                    <span class="star">★</span><span class="star">★</span>
+                    <span class="star">★</span><span class="star">★</span>
+                    <span class="star">★</span><span class="star">★</span>
+                    <span class="star">★</span><span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+
+                <div class="rating-number">9.2 / 10</div>
+            </div>
+
+
+        <!-- 3. The Dark Knight -->
+       <div class="movie-card">
+    <div class="poster-wrapper">
+        <img src="dark-knight.jpg" alt="The Dark Knight poster">
+        <div class="movie-tooltip">
+            <div class="movie-title">The Dark Knight</div>
+            <div class="movie-rating">IMDb rating: 9.0 / 10</div>
+        </div>
+    </div>
+
+    <div class="rating-stars" data-rating="9.0">
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span>
+    </div>
+
+    <div class="rating-number">9.0 / 10</div>
+</div>
+
+
+
+        <!-- 4. Schindler's List -->
+        <div class="movie-card">
+    <div class="poster-wrapper">
+        <img src="schindlers-list.jpg" alt="Schindler’s List poster">
+        <div class="movie-tooltip">
+            <div class="movie-title">Schindler’s List</div>
+            <div class="movie-rating">IMDb rating: 9.0 / 10</div>
+        </div>
+    </div>
+
+    <div class="rating-stars" data-rating="9.0">
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span>
+    </div>
+
+    <div class="rating-number">9.0 / 10</div>
+</div>
+
+        <!-- 5. LOTR: The Return of the King -->
+        <div class="movie-card">
+    <div class="poster-wrapper">
+        <img src="lotr-return-king.jpg" alt="Return of the King poster">
+        <div class="movie-tooltip">
+            <div class="movie-title">The Lord of the Rings: The Return of the King</div>
+            <div class="movie-rating">IMDb rating: 9.0 / 10</div>
+        </div>
+    </div>
+
+    <div class="rating-stars" data-rating="9.0">
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span>
+    </div>
+
+    <div class="rating-number">9.0 / 10</div>
+</div>
+
+
+
+        <!-- 6. The Godfather Part II -->
+       <div class="movie-card">
+    <div class="poster-wrapper">
+        <img src="godfather-2.jpg" alt="The Godfather Part II poster">
+        <div class="movie-tooltip">
+            <div class="movie-title">The Godfather Part II</div>
+            <div class="movie-rating">IMDb rating: 9.0 / 10</div>
+        </div>
+    </div>
+
+    <div class="rating-stars" data-rating="9.0">
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span>
+    </div>
+
+    <div class="rating-number">9.0 / 10</div>
+</div>
+
+
+
+        <!-- 7. Pulp Fiction -->
+        <div class="movie-card">
+    <div class="poster-wrapper">
+        <img src="pulp-fiction.jpg" alt="Pulp Fiction poster">
+        <div class="movie-tooltip">
+            <div class="movie-title">Pulp Fiction</div>
+            <div class="movie-rating">IMDb rating: 9.0 / 10</div>
+        </div>
+    </div>
+
+    <div class="rating-stars" data-rating="9.0">
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span>
+    </div>
+
+    <div class="rating-number">9.0 / 10</div>
+</div>
+
+
+
+        <!-- 8. LOTR: The Fellowship of the Ring -->
+      <div class="movie-card">
+    <div class="poster-wrapper">
+        <img src="lotr-fellowship.jpg" alt="Fellowship of the Ring poster">
+        <div class="movie-tooltip">
+            <div class="movie-title">The Lord of the Rings: The Fellowship of the Ring</div>
+            <div class="movie-rating">IMDb rating: 8.9 / 10</div>
+        </div>
+    </div>
+
+    <div class="rating-stars" data-rating="8.9">
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span>
+    </div>
+
+    <div class="rating-number">8.9 / 10</div>
+</div>
+
+
+
+        <!-- 9. Fight Club -->
+      <div class="movie-card">
+    <div class="poster-wrapper">
+        <img src="fight-club.jpg" alt="Fight Club poster">
+        <div class="movie-tooltip">
+            <div class="movie-title">Fight Club</div>
+            <div class="movie-rating">IMDb rating: 8.8 / 10</div>
+        </div>
+    </div>
+
+    <div class="rating-stars" data-rating="8.8">
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span>
+    </div>
+
+    <div class="rating-number">8.8 / 10</div>
+</div>
+
+
+        <!-- 10. Inception -->
+      <div class="movie-card">
+    <div class="poster-wrapper">
+        <img src="inception.jpg" alt="Inception poster">
+        <div class="movie-tooltip">
+            <div class="movie-title">Inception</div>
+            <div class="movie-rating">IMDb rating: 8.8 / 10</div>
+        </div>
+    </div>
+
+    <div class="rating-stars" data-rating="8.8">
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span>
+    </div>
+
+    <div class="rating-number">8.8 / 10</div>
+</div>
+</section>   <!-- CLOSE PAGE 2 -->
+
+
+    <!-- ========== PAGE 3 : DIRECTORS ========== -->
+    <section id="page3" class="section directors-section">
+        <div class="title-banner spotlight">
+            <span>The Directors</span>
+        </div>
+
+        <div class="directors-layout">
+            <div class="directors-panel directors-legend">
+                <!-- Replace src with your legend image filename -->
+                <img src="directors-legend.png" alt="Legend of director icons" />
+            </div>
+
+            <div class="directors-panel directors-grid">
+                <!-- Replace src with your directors visualization image filename -->
+                <img src="directors.png" alt="Directors of the Top 50 movies visualization" />
+            </div>
+        </div>
+
+        <p class="directors-text">
+            The first ingredient to a top-rated movie is your director. The top 10 movies all had
+            white, male directors. And several directors made multiple appearances. The bottom 10
+            movies equally had a large amount of white, male directors. This suggests that white
+            male directors don’t necessarily direct better movies, but are given more openings and
+            opportunities to direct movies in the first place.
+        </p>
+    </section>
+
+    <!-- ========== PAGE 4 : GENRE IMPACT ========== -->
+<section id="page4" class="section genre-section">
+
+    <div class="title-banner spotlight">
+        <span>The Genre</span>
+    </div>
+
+    <div class="genre-content">
+
+        <div class="genre-visual fade-in">
+            <img src="genre.png" alt="Genre visualization" />
+        </div>
+
+        <p class="genre-text fade-in">
+            Drama genre: a genre that relies on the emotional development of realistic characters and 
+            prioritizes serious topics over humor.
+            <br><br>
+            96% of the top 50 movies were labeled as a drama genre with one or two other subgenres.
+            This reflects that viewers appreciate serious tones, emotional depth, realistic characters, 
+            and interpersonal conflicts.
+        </p>
+
+    </div>
+
+</section>
+<!-- ========= PAGE 5 : RELEASE YEAR ========= -->
+<section id="page5" class="section release-section">
+    <div class="title-banner spotlight">
+        <span>The Release Year</span>
+    </div>
+
+    <!-- Legend -->
+    <div class="release-legend">
+        <div class="legend-item">
+            <span class="legend-box before"></span>
+            <span class="legend-label">Before 2000s</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-box after"></span>
+            <span class="legend-label">After 2000s</span>
+        </div>
+    </div>
+
+    <!-- Top 50 Bar -->
+    <div class="release-block">
+        <div class="release-label">Top 50 IMDb-rated Movies</div>
+        <div class="release-bar-container">
+            <div class="bar before" data-width="62"></div>
+            <div class="bar after" data-width="38"></div>
+        </div>
+        <div class="release-bar-text">
+            <span class="before-text">62%</span>
+            <span class="after-text">38%</span>
+        </div>
+    </div>
+
+    <!-- Bottom 50 Bar -->
+    <div class="release-block">
+        <div class="release-label">Bottom 50 IMDb-rated Movies</div>
+        <div class="release-bar-container">
+            <div class="bar before" data-width="30"></div>
+            <div class="bar after" data-width="70"></div>
+        </div>
+        <div class="release-bar-text">
+            <span class="before-text">30%</span>
+            <span class="after-text">70%</span>
+        </div>
+    </div>
+
+    <!-- Explanation Text -->
+    <p class="release-text">
+        62% of the top 50 IMDb-rated movies were made before 2000, compared with only 30% of the bottom 50.
+        This suggests that older films perform better, potentially due to stylistic appeal or differences
+        in how movies were judged prior to major technological advancement.
+    </p>
+
+</section>
+<!-- ========== PAGE 6 : FINAL FORMULA ========== -->
+<section id="page6" class="section formula-section">
+    <div class="title-banner spotlight">
+        <span>The Final Formula</span>
+    </div>
+
+    <div class="formula-layout">
+
+        <!-- Left side: the “formula” icons -->
+        <div class="formula-icons">
+
+            <div class="formula-item">
+                <img src="icon-director.png" alt="White male director" class="formula-icon">
+                <div class="formula-label">White Male<br>Director</div>
+            </div>
+
+            <div class="formula-plus">+</div>
+
+            <div class="formula-item">
+                <img src="icon-drama.png" alt="Drama genre" class="formula-icon">
+                <div class="formula-label">Drama<br>Genre</div>
+            </div>
+
+            <div class="formula-plus">+</div>
+
+            <div class="formula-item">
+                <img src="icon-calendar.png" alt="Before 2000" class="formula-icon">
+                <div class="formula-label">Before<br>2000</div>
+            </div>
+
+            <div class="formula-equals">=</div>
+        </div>
+
+        <!-- Right side: the resulting Top 5 Movies -->
+        <div class="formula-results">
+
+            <div class="formula-movie">
+                <img src="shawshank.jpg" alt="Shawshank" class="formula-poster">
+                <div class="formula-rating">9.3</div>
+            </div>
+
+            <div class="formula-movie">
+                <img src="godfather.jpg" alt="The Godfather" class="formula-poster">
+                <div class="formula-rating">9.2</div>
+            </div>
+
+            <div class="formula-movie">
+                <img src="dark-knight.jpg" alt="The Dark Knight" class="formula-poster">
+                <div class="formula-rating">9.0</div>
+            </div>
+
+            <div class="formula-movie">
+                <img src="schindlers-list.jpg" alt="Schindler's List" class="formula-poster">
+                <div class="formula-rating">9.0</div>
+            </div>
+
+            <div class="formula-movie">
+                <img src="lotr-return-king.jpg" alt="LOTR Return of the King" class="formula-poster">
+                <div class="formula-rating">9.0</div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Trailer Section -->
+    <h2 class="trailer-title">Watch a trailer of the most perfect film below:</h2>
+
+   <div class="trailer-wrapper reveal">
+    <video id="perfectMovieTrailer" controls>
+        <source src="trailer.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+
+</section>
+
+
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
